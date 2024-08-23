@@ -49,6 +49,7 @@ import com.mapbox.navigation.core.trip.session.VoiceInstructionsObserver
 import com.mapbox.navigation.dropin.map.MapViewObserver
 import com.mapbox.navigation.dropin.navigationview.NavigationViewListener
 import com.mapbox.navigation.utils.internal.ifNonNull
+import androidx.core.content.ContextCompat
 
 class NavigationActivity : AppCompatActivity() {
     private var finishBroadcastReceiver: BroadcastReceiver? = null
@@ -150,10 +151,15 @@ class NavigationActivity : AppCompatActivity() {
             finishBroadcastReceiver,
             IntentFilter(NavigationLauncher.KEY_STOP_NAVIGATION)
         )
+        registerReceiver(
+            finishBroadcastReceiver,
+            IntentFilter(NavigationLauncher.KEY_STOP_NAVIGATION),
+            ContextCompat.RECEIVER_NOT_EXPORTED)
 
         registerReceiver(
             addWayPointsBroadcastReceiver,
-            IntentFilter(NavigationLauncher.KEY_ADD_WAYPOINTS)
+            IntentFilter(NavigationLauncher.KEY_ADD_WAYPOINTS),
+            ContextCompat.RECEIVER_NOT_EXPORTED
         )
 
         // TODO set the style Uri
