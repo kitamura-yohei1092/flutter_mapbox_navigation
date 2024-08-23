@@ -149,10 +149,6 @@ class NavigationActivity : AppCompatActivity() {
 
         registerReceiver(
             finishBroadcastReceiver,
-            IntentFilter(NavigationLauncher.KEY_STOP_NAVIGATION)
-        )
-        registerReceiver(
-            finishBroadcastReceiver,
             IntentFilter(NavigationLauncher.KEY_STOP_NAVIGATION),
             ContextCompat.RECEIVER_NOT_EXPORTED)
 
